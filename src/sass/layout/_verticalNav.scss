@@ -1,0 +1,25 @@
+.secondary-nav {
+    width: 117px;
+    height: 1024px;
+    background-color: $dark-grey;
+    box-shadow:  $box-shadow;
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 20px;
+
+        img {
+            width: 64px;
+            height: 64px;
+        }
+    }
+
+    p {
+        color: white;
+        font-size: 0.75em;
+        font-weight: 500;
+        margin-bottom: 59px;
+    }
+}

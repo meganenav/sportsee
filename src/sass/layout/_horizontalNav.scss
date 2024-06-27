@@ -1,0 +1,31 @@
+header {
+    background-color: $dark-grey;
+    box-shadow: $box-shadow;
+    height: 91px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    img {
+        width: 178px;
+        margin-left: 29px;
+    }
+
+    .primary-nav {
+        font-size: 1.5em;
+        font-weight: 500;
+        color: white;
+        margin-right: 91px;
+
+        ul {
+            display: flex;
+            column-gap: 219px;
+            padding: 0;
+        }
+
+        li {
+            list-style-type: none;
+        }
+    }
+}
