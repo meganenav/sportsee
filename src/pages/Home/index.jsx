@@ -7,10 +7,12 @@ export default function Home() {
     return (
         <>
             <HorizontalNav />
-            <main>
+            <div className="container">
                 <VerticalNav />
-                <Dashboard />
-            </main>
+                <main>
+                    <Dashboard />
+                </main>
+            </div>
         </>
     )
 }
