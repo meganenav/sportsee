@@ -1,0 +1,24 @@
+main {
+    display: flex;
+
+    .container {
+        margin: 68px 0 0 110px;
+
+        h1 {
+            margin: 0;
+            font-size: 3em;
+            font-weight: 500;
+            color: black;
+
+            .first-name {
+                color: $red;
+            }
+        }
+
+        p {
+            margin-top: 41px;
+            font-size: 1.125em;
+            font-weight: 400;
+        }
+    }
+}
