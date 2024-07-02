@@ -1,10 +1,12 @@
 import user from '../../data/user.json'
 import activity from '../../data/activity.json'
 import sessions from '../../data/sessions.json'
+import performance from '../../data/performance.json'
 import UserInfos from '../../components/UserInfos'
 import FoodMeasures from '../../components/FoodMeasures'
 import ActivityChart from '../../components/ActivityChart'
 import SessionsChart from '../../components/SessionsChart'
+import PerformanceChart from '../../components/PerformanceChart'
 
 export default function Dashboard() {
     const firstName = user.user.userInfos.firstName
@@ -22,6 +24,7 @@ export default function Dashboard() {
 
     const activitySessions = activity.data.sessions
     const durationSessions = sessions.data.sessions
+    const performanceData = performance.data
 
     return (
         <>
@@ -30,6 +33,7 @@ export default function Dashboard() {
                 <FoodMeasures calories={calories} proteines={proteines} carbs={carbs} lipids={lipids} />
                 <div className="activity-chart"><ActivityChart sessions={activitySessions} /></div>
                 <div className="sessions-chart"><SessionsChart sessions={durationSessions} /></div>
+                <div className="performance-chart"><PerformanceChart performance={performanceData} /></div>
             </div>
         </>
     )
