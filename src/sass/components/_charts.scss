@@ -13,13 +13,21 @@
     .recharts-cartesian-grid-vertical {
         display: none;
     }
-
-    .recharts-default-legend {
-        text-align: right;
-    }
 }
 
-.sessions-chart, .score-chart {
+.score-chart {
+    background-color: $light-grey;
+}
+
+.sessions-chart {
+    background-color: $red-sessions;
+}
+
+.performance-chart {
+    background-color: $dark-grey;
+}
+
+.sessions-chart, .score-chart, .performance-chart {
     .recharts-cartesian-grid-vertical, .recharts-cartesian-grid-horizontal {
         display: none;
     }

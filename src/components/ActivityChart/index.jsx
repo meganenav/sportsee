@@ -1,36 +1,28 @@
 import React from "react";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-} from "recharts";
+import * as Recharts from "recharts";
 
 export default function ActivityChart(props) {
   return (
-    <BarChart
-      width={800}
-      height={300}
+    <Recharts.BarChart
+      width={835}
+      height={320}
       data={props.sessions}
       margin={{
-        top: 5,
-        right: 30,
-        left: 20,
-        bottom: 5,
+        top: 30,
+        right: 29,
+        left: 32,
+        bottom: 23,
       }}
     >
-      <CartesianGrid stroke="#DEDEDE" />
-      <XAxis dataKey="" />
-      <YAxis yAxisId="left" orientation="left" />
-      <YAxis yAxisId="right" orientation="right" />
-      <Tooltip shared={false} trigger="click" />
-      <Legend iconType="circle" verticalAlign="top" align="right" />
-      <Bar yAxisId="right" dataKey="kilogram" name="Poids (kg)" fill="#282D30" barSize="5" radius={[10, 10, 0, 0]} />
-      <Bar yAxisId="left" dataKey="calories" name="Calories brûlées (kCal)" fill="#E60000" barSize="5" radius={[10, 10, 0, 0]} />
-    </BarChart>
+      <Recharts.CartesianGrid stroke="#DEDEDE" />
+      <Recharts.XAxis dataKey="" />
+      <Recharts.YAxis yAxisId="left" orientation="left" hide />
+      <Recharts.YAxis yAxisId="right" orientation="right" />
+      <Recharts.Tooltip shared={false} trigger="click" />
+      <Recharts.Legend iconType="circle" verticalAlign="top" align="right" margin={{ top: 5, right: 30, left: 20, bottom: 5 }} />
+      <Recharts.Bar yAxisId="right" dataKey="kilogram" name="Poids (kg)" fill="#282D30" barSize="5" radius={[10, 10, 0, 0]} />
+      <Recharts.Bar yAxisId="left" dataKey="calories" name="Calories brûlées (kCal)" fill="#E60000" barSize="5" radius={[10, 10, 0, 0]} />
+    </Recharts.BarChart>
   );
 }
 

@@ -20,8 +20,6 @@ export default function PerformanceChart(props) {
 
     return (
         <RadarChart
-          cx={120}
-          cy={120}
           outerRadius={80}
           width={258}
           height={263}

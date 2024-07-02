@@ -32,11 +32,15 @@ export default function Dashboard() {
         <>
             <UserInfos name={firstName} />
             <div className="container-data">
+                <section className="charts-container">
+                    <div className="chart activity-chart"><ActivityChart sessions={activitySessions} /></div>
+                    <div className="charts-blocks">
+                        <article className="chart sessions-chart"><SessionsChart sessions={durationSessions} /></article>
+                        <article className="chart performance-chart"><PerformanceChart performance={performanceData} /></article>
+                        <article className="chart score-chart"><ScoreChart score={score} /></article>
+                    </div>
+                </section>
                 <FoodMeasures calories={calories} proteines={proteines} carbs={carbs} lipids={lipids} />
-                <div className="chart activity-chart"><ActivityChart sessions={activitySessions} /></div>
-                <div className="chart sessions-chart"><SessionsChart sessions={durationSessions} /></div>
-                <div className="chart performance-chart"><PerformanceChart performance={performanceData} /></div>
-                <div className="chart score-chart"><ScoreChart score={score} /></div>
             </div>
         </>
     )
