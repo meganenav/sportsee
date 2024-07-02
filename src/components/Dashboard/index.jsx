@@ -1,8 +1,10 @@
 import user from '../../data/user.json'
 import activity from '../../data/activity.json'
+import sessions from '../../data/sessions.json'
 import UserInfos from '../../components/UserInfos'
 import FoodMeasures from '../../components/FoodMeasures'
 import ActivityChart from '../../components/ActivityChart'
+import SessionsChart from '../../components/SessionsChart'
 
 export default function Dashboard() {
     const firstName = user.user.userInfos.firstName
@@ -19,6 +21,7 @@ export default function Dashboard() {
     const lipids = user.user.keyData.lipidCount
 
     const activitySessions = activity.data.sessions
+    const durationSessions = sessions.data.sessions
 
     return (
         <>
@@ -26,6 +29,7 @@ export default function Dashboard() {
             <div className="container-data">
                 <FoodMeasures calories={calories} proteines={proteines} carbs={carbs} lipids={lipids} />
                 <div className="activity-chart"><ActivityChart sessions={activitySessions} /></div>
+                <div className="sessions-chart"><SessionsChart sessions={durationSessions} /></div>
             </div>
         </>
     )

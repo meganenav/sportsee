@@ -3,16 +3,18 @@
     border-radius: 5px;
     width: 835px;
     height: 320px;
-}
-
-.recharts-cartesian-grid-vertical {
-    display: none;
-}
-
-.recharts-legend-wrapper {
     
+    .recharts-cartesian-grid-vertical {
+        display: none;
+    }
+
+    .recharts-default-legend {
+        text-align: right;
+    }
 }
 
-.recharts-default-legend {
-    text-align: right;
+.sessions-chart {
+    .recharts-cartesian-grid-vertical, .recharts-cartesian-grid-horizontal {
+        display: none;
+    }
 }
