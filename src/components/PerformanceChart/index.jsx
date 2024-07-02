@@ -27,7 +27,7 @@ export default function PerformanceChart(props) {
           height={263}
           data={newDataArray}
         >
-            <CartesianGrid fill="#282D30" />
+          <CartesianGrid fill="#282D30" />
           <PolarGrid />
           <PolarAngleAxis dataKey="kind" />
           <PolarRadiusAxis />

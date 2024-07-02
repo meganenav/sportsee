@@ -1,6 +1,12 @@
+.chart {
+    border-radius: 5px;
+    box-shadow: $box-shadow-containers;
+    width: 258px;
+    height: 263px;
+}
+
 .activity-chart {
     background-color: $light-grey;
-    border-radius: 5px;
     width: 835px;
     height: 320px;
     
@@ -13,7 +19,7 @@
     }
 }
 
-.sessions-chart {
+.sessions-chart, .score-chart {
     .recharts-cartesian-grid-vertical, .recharts-cartesian-grid-horizontal {
         display: none;
     }

@@ -7,6 +7,7 @@ import FoodMeasures from '../../components/FoodMeasures'
 import ActivityChart from '../../components/ActivityChart'
 import SessionsChart from '../../components/SessionsChart'
 import PerformanceChart from '../../components/PerformanceChart'
+import ScoreChart from '../../components/ScoreChart'
 
 export default function Dashboard() {
     const firstName = user.user.userInfos.firstName
@@ -25,15 +26,17 @@ export default function Dashboard() {
     const activitySessions = activity.data.sessions
     const durationSessions = sessions.data.sessions
     const performanceData = performance.data
+    const score = user.user.todayScore
 
     return (
         <>
             <UserInfos name={firstName} />
             <div className="container-data">
                 <FoodMeasures calories={calories} proteines={proteines} carbs={carbs} lipids={lipids} />
-                <div className="activity-chart"><ActivityChart sessions={activitySessions} /></div>
-                <div className="sessions-chart"><SessionsChart sessions={durationSessions} /></div>
-                <div className="performance-chart"><PerformanceChart performance={performanceData} /></div>
+                <div className="chart activity-chart"><ActivityChart sessions={activitySessions} /></div>
+                <div className="chart sessions-chart"><SessionsChart sessions={durationSessions} /></div>
+                <div className="chart performance-chart"><PerformanceChart performance={performanceData} /></div>
+                <div className="chart score-chart"><ScoreChart score={score} /></div>
             </div>
         </>
     )
