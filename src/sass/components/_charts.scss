@@ -9,6 +9,14 @@
     background-color: $light-grey;
     width: 835px;
     height: 320px;
+
+    .activity-chart-title {
+        position: absolute;
+        margin: 24px 0 0 32px;
+        font-size: 0.938em;
+        font-weight: 500;
+        color: $dark-grey2;
+    }
     
     .recharts-cartesian-grid-vertical {
         display: none;
@@ -21,14 +29,41 @@
 
 .sessions-chart {
     background-color: $red-sessions;
+    .sessions-chart-title {
+        position: absolute;
+        margin: 29px 0 0 34px;
+        font-size: 0.938em;
+        font-weight: 500;
+        color: white;
+        z-index: 99;
+    }
 }
 
 .performance-chart {
     background-color: $dark-grey;
+
+    .recharts-polar-angle-axis-ticks{
+        font-size: 0.75em;
+    }
+}
+
+.score-chart {
+    position: relative;
+
+    .score-chart-title {
+        font-size: 0.938em;
+        font-weight: 500;
+        color: $dark-grey2;
+        position: absolute;
+        top: 24px;
+        left: 32px;
+        z-index: 999;
+        margin: 0;
+    }
 }
 
 .sessions-chart, .score-chart, .performance-chart {
-    .recharts-cartesian-grid-vertical, .recharts-cartesian-grid-horizontal {
+    .recharts-cartesian-grid-vertical, .recharts-cartesian-grid-horizontal, .recharts-polar-grid-angle {
         display: none;
     }
 }

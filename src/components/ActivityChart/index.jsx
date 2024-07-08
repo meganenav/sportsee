@@ -1,5 +1,5 @@
-import React from "react";
-import * as Recharts from "recharts";
+import React from "react"
+import * as Recharts from "recharts"
 
 export default function ActivityChart(props) {
   return (
@@ -14,16 +14,16 @@ export default function ActivityChart(props) {
         bottom: 23,
       }}
     >
-      <Recharts.CartesianGrid stroke="#DEDEDE" />
-      <Recharts.XAxis dataKey="" />
+      <Recharts.CartesianGrid stroke="#DEDEDE" strokeDasharray={3} />
+      <Recharts.XAxis tickLine={false} stroke="#DEDEDE" tick={{stroke: "#9B9EAC", strokeWidth: 0.5}}/>
       <Recharts.YAxis yAxisId="left" orientation="left" hide />
-      <Recharts.YAxis yAxisId="right" orientation="right" />
+      <Recharts.YAxis type="number" domain={["dataMin-2", "dataMax+2"]} yAxisId="right" orientation="right" tickLine={false} axisLine={false} tick={{stroke: "#9B9EAC", strokeWidth: 0.5}} />
       <Recharts.Tooltip shared={false} trigger="click" />
-      <Recharts.Legend iconType="circle" verticalAlign="top" align="right" margin={{ top: 5, right: 30, left: 20, bottom: 5 }} />
+      <Recharts.Legend iconType="circle" verticalAlign="top" align="right" />
       <Recharts.Bar yAxisId="right" dataKey="kilogram" name="Poids (kg)" fill="#282D30" barSize="5" radius={[10, 10, 0, 0]} />
       <Recharts.Bar yAxisId="left" dataKey="calories" name="Calories brûlées (kCal)" fill="#E60000" barSize="5" radius={[10, 10, 0, 0]} />
     </Recharts.BarChart>
-  );
+  )
 }
 
 

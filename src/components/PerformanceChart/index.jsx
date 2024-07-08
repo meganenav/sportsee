@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import {
   Radar,
   RadarChart,
@@ -6,7 +6,7 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis, 
   CartesianGrid
-} from "recharts";
+} from "recharts"
 
 export default function PerformanceChart(props) {
     let newDataArray = []
@@ -27,15 +27,13 @@ export default function PerformanceChart(props) {
         >
           <CartesianGrid fill="#282D30" />
           <PolarGrid />
-          <PolarAngleAxis dataKey="kind" />
-          <PolarRadiusAxis />
+          <PolarAngleAxis dataKey="kind" stroke="#FFF" tickLine={false} />
+          <PolarRadiusAxis tick={false} axisLine={false} />
           <Radar
-            name="Mike"
             dataKey="value"
-            stroke="#FFFFFF"
             fill="#FF0101"
             fillOpacity={0.7}
           />
         </RadarChart>
-    );
+    )
 }

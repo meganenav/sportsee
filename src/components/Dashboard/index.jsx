@@ -8,6 +8,10 @@ import ActivityChart from '../../components/ActivityChart'
 import SessionsChart from '../../components/SessionsChart'
 import PerformanceChart from '../../components/PerformanceChart'
 import ScoreChart from '../../components/ScoreChart'
+import caloriesImg from '../../images/calories-icon.svg'
+import proteinesImg from '../../images/protein-icon.svg'
+import carbsImg from '../../images/carbs-icon.svg'
+import lipidsImg from '../../images/fat-icon.svg'
 
 export default function Dashboard() {
     const firstName = user.user.userInfos.firstName
@@ -33,14 +37,28 @@ export default function Dashboard() {
             <UserInfos name={firstName} />
             <div className="container-data">
                 <section className="charts-container">
-                    <div className="chart activity-chart"><ActivityChart sessions={activitySessions} /></div>
+                    <div className="chart activity-chart">
+                        <p className="activity-chart-title">Activité quotidienne</p>
+                        <ActivityChart sessions={activitySessions} />
+                    </div>
                     <div className="charts-blocks">
-                        <article className="chart sessions-chart"><SessionsChart sessions={durationSessions} /></article>
+                        <article className="chart sessions-chart">
+                            <p className="sessions-chart-title">Durée moyenne des sessions</p>
+                            <SessionsChart sessions={durationSessions} />
+                        </article>
                         <article className="chart performance-chart"><PerformanceChart performance={performanceData} /></article>
-                        <article className="chart score-chart"><ScoreChart score={score} /></article>
+                        <article className="chart score-chart">
+                            <p className="score-chart-title">Score</p>
+                            <ScoreChart score={score} />
+                        </article>
                     </div>
                 </section>
-                <FoodMeasures calories={calories} proteines={proteines} carbs={carbs} lipids={lipids} />
+                <div className="food-measures">
+                    <FoodMeasures img={ caloriesImg } alt="Calories icon" measure={ calories } title="Calories" unit="kCal" />
+                    <FoodMeasures img={ proteinesImg } alt="Proteines icon" measure={ proteines } title="Protéines" unit="g" />
+                    <FoodMeasures img={ carbsImg } alt="Carbs icon" measure={ carbs } title="Glucides" unit="g" />
+                    <FoodMeasures img={ lipidsImg } alt="Lipids icon" measure={ lipids } title="Lipides" unit="g" />
+                </div>
             </div>
         </>
     )

@@ -18,13 +18,13 @@ export default function ScoreChart(props) {
       outerRadius={100}
       barSize={10}
       data={data}
+      startAngle={180} 
+      endAngle={0}
     >
     <CartesianGrid fill="#FBFBFB" />
-    <PolarAngleAxis type="number" domain={[0, 100]} angleAxisId={0} tick={false} />
+    <PolarAngleAxis type="number" domain={[0, 100]} tick={false} />
       <RadialBar
-        minAngle={15}
-        background
-        clockWise
+        fill="#FBFBFB"
         dataKey="score"
       />
     </RadialBarChart>
