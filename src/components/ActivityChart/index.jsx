@@ -1,12 +1,41 @@
-import React from "react"
-import * as Recharts from "recharts"
+import React, { useEffect, useState } from 'react'
+import * as Recharts from 'recharts'
+import { fetchActivity } from '../../services/activity.js'
 
 export default function ActivityChart(props) {
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    const getData = async () => {
+      try{
+        const result = await fetchActivity(props.id)
+        setData(result)
+      } 
+      catch(error){
+        setError(error)
+      } 
+      finally{
+        setLoading(false)
+      }
+    }
+    getData()
+  })
+
+  if(loading){
+    return <div>Chargement</div>
+  }
+
+  if(error){
+    return <div>Erreur: {error.message}</div>
+  }
+
   return (
     <Recharts.BarChart
       width={835}
       height={320}
-      data={props.sessions}
+      data={data.data.sessions}
       margin={{
         top: 30,
         right: 29,
@@ -25,5 +54,3 @@ export default function ActivityChart(props) {
     </Recharts.BarChart>
   )
 }
-
-

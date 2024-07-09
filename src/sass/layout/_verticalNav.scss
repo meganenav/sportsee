@@ -1,31 +1,31 @@
 .secondary-nav {
-    width: 117px;
-    height: 1024px;
-    background-color: $near-black;
-    box-shadow:  $box-shadow;
+  width: 117px;
+  height: 1024px;
+  background-color: $near-black;
+  box-shadow: $box-shadow;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+
+  nav {
     display: flex;
-    justify-content: space-around;
     flex-direction: column;
     align-items: center;
+    row-gap: 20px;
 
-    nav {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        row-gap: 20px;
-
-        img {
-            width: 64px;
-            height: 64px;
-        }
+    img {
+      width: 64px;
+      height: 64px;
     }
+  }
 
-    p {
-        color: white;
-        font-size: 0.75em;
-        font-weight: 500;
-        margin: 0;
-        width: 150px;
-        transform: rotate(-90deg);
-    }
+  p {
+    color: white;
+    font-size: 0.75em;
+    font-weight: 500;
+    margin: 0;
+    width: 150px;
+    transform: rotate(-90deg);
+  }
 }

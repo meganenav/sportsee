@@ -1,37 +1,37 @@
 .food-measures {
+  display: flex;
+  flex-direction: column;
+  row-gap: 39px;
+
+  .measure-block {
+    background-color: $light-grey;
+    box-shadow: $box-shadow-containers;
+    width: 258px;
+    height: 124px;
+    border-radius: 5px;
     display: flex;
-    flex-direction: column;
-    row-gap: 39px;
+    align-items: center;
 
-    .measure-block {
-        background-color: $light-grey;
-        box-shadow: $box-shadow-containers;
-        width: 258px;
-        height: 124px;
-        border-radius: 5px;
-        display: flex;
-        align-items: center;
-
-        img {
-            width: 60px;
-            height: 60px;
-            margin: 32px;
-        }
-
-        .measure-data {
-            .food-data {
-                color: $dark-grey;
-                font-size: 1.25em;
-                font-weight: 700;
-                margin: 0;
-            }
-
-            .food-title {
-                color: $grey;
-                font-size: 0.875em;
-                font-weight: 400;
-                margin: 0;
-            }
-        }
+    img {
+      width: 60px;
+      height: 60px;
+      margin: 32px;
     }
+
+    .measure-data {
+      .food-data {
+        color: $dark-grey;
+        font-size: 1.25em;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      .food-title {
+        color: $grey;
+        font-size: 0.875em;
+        font-weight: 400;
+        margin: 0;
+      }
+    }
+  }
 }

@@ -1,14 +1,49 @@
-import React from "react";
-import { RadialBarChart, RadialBar, PolarAngleAxis, CartesianGrid } from "recharts";
+import React, { useEffect, useState } from 'react'
+import dataAdapter from '../../utils/dataAdapterScore.js'
+import {
+  RadialBarChart,
+  RadialBar,
+  PolarAngleAxis,
+  CartesianGrid,
+} from 'recharts'
 
 export default function ScoreChart(props) {
-    const score = props.score * 100
-    const data = [
-        {
-            score : score,
-            fill: "#FF0000"
-        }
-    ]
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const result = await dataAdapter(props.id)
+        setData(result)
+      } 
+      catch(error){
+        setError(error)
+      } 
+      finally{
+        setLoading(false)
+      }
+    }
+    getData()
+  })
+
+  if(loading){
+    return <div>Chargement</div>
+  }
+
+  if(error){
+    return <div>Erreur: {error.message}</div>
+  }
+
+  const score = data.newScore * 100
+
+  const dataGraph = [
+    {
+      score: score,
+      fill: "#FF0000",
+    },
+  ]
 
   return (
     <RadialBarChart
@@ -17,16 +52,13 @@ export default function ScoreChart(props) {
       innerRadius={100}
       outerRadius={100}
       barSize={10}
-      data={data}
-      startAngle={180} 
+      data={dataGraph}
+      startAngle={180}
       endAngle={0}
     >
-    <CartesianGrid fill="#FBFBFB" />
-    <PolarAngleAxis type="number" domain={[0, 100]} tick={false} />
-      <RadialBar
-        fill="#FBFBFB"
-        dataKey="score"
-      />
+      <CartesianGrid fill="#FBFBFB" />
+      <PolarAngleAxis type="number" domain={[0, 100]} tick={false} />
+      <RadialBar fill="#FBFBFB" dataKey="score" />
     </RadialBarChart>
-  );
+  )
 }
