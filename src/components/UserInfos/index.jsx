@@ -20,7 +20,7 @@ export default function UserInfos(props) {
       }
     }
     getData()
-  })
+  }, [props.id])
 
   if(loading){
     return <div>Chargement</div>

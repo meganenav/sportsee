@@ -4,7 +4,7 @@ import {
   RadialBarChart,
   RadialBar,
   PolarAngleAxis,
-  CartesianGrid,
+  CartesianGrid
 } from 'recharts'
 
 export default function ScoreChart(props) {
@@ -26,7 +26,7 @@ export default function ScoreChart(props) {
       }
     }
     getData()
-  })
+  }, [props.id])
 
   if(loading){
     return <div>Chargement</div>
@@ -37,7 +37,6 @@ export default function ScoreChart(props) {
   }
 
   const score = data.newScore * 100
-
   const dataGraph = [
     {
       score: score,
@@ -46,19 +45,28 @@ export default function ScoreChart(props) {
   ]
 
   return (
-    <RadialBarChart
-      width={258}
-      height={263}
-      innerRadius={100}
-      outerRadius={100}
-      barSize={10}
-      data={dataGraph}
-      startAngle={180}
-      endAngle={0}
-    >
-      <CartesianGrid fill="#FBFBFB" />
-      <PolarAngleAxis type="number" domain={[0, 100]} tick={false} />
-      <RadialBar fill="#FBFBFB" dataKey="score" />
-    </RadialBarChart>
+    <>
+      <div className="score-chart-inside">
+        <p className="score-chart-text">
+          <span className="score-span">{score}%</span>
+          <br/> 
+          de votre objectif
+        </p>
+      </div>
+      <RadialBarChart
+        width={258}
+        height={263}
+        innerRadius={90}
+        outerRadius={90}
+        barSize={10}
+        data={dataGraph}
+        startAngle={0}
+        endAngle={360}
+      >
+        <CartesianGrid fill="#FBFBFB" />
+        <PolarAngleAxis type="number" domain={[0, 100]} tick={false} />
+        <RadialBar fill="#FBFBFB" dataKey="score" cornerRadius={5} clockWise={false} />
+      </RadialBarChart>
+    </>
   )
 }

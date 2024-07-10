@@ -25,7 +25,7 @@ export default function FoodMeasures(props) {
       }
     }
     getData()
-  })
+  }, [props.id])
 
   if(loading){
     return <div>Chargement</div>

@@ -21,7 +21,7 @@ export default function ActivityChart(props) {
       }
     }
     getData()
-  })
+  }, [props.id])
 
   if(loading){
     return <div>Chargement</div>

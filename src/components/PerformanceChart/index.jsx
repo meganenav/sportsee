@@ -28,7 +28,7 @@ export default function PerformanceChart(props) {
       }
     }
     getData()
-  })
+  }, [props.id])
 
   if(loading){
     return <div>Chargement</div>
@@ -47,7 +47,7 @@ export default function PerformanceChart(props) {
   }
 
   return (
-    <RadarChart outerRadius={80} width={258} height={263} data={newDataArray}>
+    <RadarChart outerRadius={75} width={258} height={263} data={newDataArray}>
       <CartesianGrid fill="#282D30" />
       <PolarGrid />
       <PolarAngleAxis dataKey="kind" stroke="#FFF" tickLine={false} />

@@ -21,7 +21,7 @@ export default function SessionsChart(props) {
       }
     }
     getData()
-  })
+  }, [props.id])
 
   if(loading){
     return <div>Chargement</div>
@@ -30,6 +30,15 @@ export default function SessionsChart(props) {
   if(error){
     return <div>Erreur: {error.message}</div>
   }
+  const days = {
+    1: 'L',
+    2: 'M',
+    3: 'M',
+    4: 'J',
+    5: 'V',
+    6: 'S',
+    7: 'D'
+  }
 
   return (
     <LineChart
@@ -37,8 +46,8 @@ export default function SessionsChart(props) {
       height={263}
       margin={{
         top: 77,
-        right: -5,
-        left: -5,
+        right: 5,
+        left: 5,
         bottom: 20,
       }}
       data={data.data.sessions}
@@ -51,7 +60,7 @@ export default function SessionsChart(props) {
         strokeWidth={2}
         dot={false}
       />
-      <XAxis tickLine={false} axisLine={false} stroke="#FFFFFF" />
+      <XAxis dataKey="day" tickFormatter={(tick) => days[tick]} tickLine={false} axisLine={false} stroke="#FFFFFF" />
     </LineChart>
   )
 }
