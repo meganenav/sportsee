@@ -12,8 +12,9 @@ const translationTable = {
 function transformData(data) {
   const translatedData = {}
   for(const property in data.data.kind){
-    translatedData[`${property}`] = translationTable[data.data.kind[property]]
+    translatedData[property] = translationTable[data.data.kind[property]]
   }
+
   data.data.translatedKinds = translatedData
   return data
 }

@@ -47,7 +47,7 @@ export default function PerformanceChart(props) {
   }
 
   return (
-    <RadarChart outerRadius={75} width={258} height={263} data={newDataArray}>
+    <RadarChart outerRadius={90} width={258} height={263} data={newDataArray} startAngle={-150} endAngle={210}>
       <CartesianGrid fill="#282D30" />
       <PolarGrid />
       <PolarAngleAxis dataKey="kind" stroke="#FFF" tickLine={false} />

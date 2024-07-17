@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { fetchUserInfos } from '../../services/userInfos.js'
+import dataAdapter from '../../utils/dataAdapterUserInfos.js'
 import FoodMeasureBlock from '../../components/FoodMeasureBlock'
 import caloriesImg from '../../images/calories-icon.svg'
 import proteinesImg from '../../images/protein-icon.svg'
@@ -14,7 +14,7 @@ export default function FoodMeasures(props) {
   useEffect(() => {
     const getData = async () => {
       try{
-        const result = await fetchUserInfos(props.id)
+        const result = await dataAdapter(props.id)
         setData(result)
       } 
       catch(error){
