@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { fetchUserInfos } from '../../services/userInfos.js'
 
+//Création du bloc des informations de l'utilisateur
 export default function UserInfos(props) {
+  //Initialisation des variables d'état pour la mise en place des données, le chargement et les erreurs  
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
+  //Récupération des données
   useEffect(() => {
     const getData = async () => {
       try {
@@ -30,6 +33,7 @@ export default function UserInfos(props) {
     return <div>Erreur: {error.message}</div>
   }
 
+  //Affichage du message personnalisé pour l'utilisateur
   return (
     <div className="user-infos">
       <h1>

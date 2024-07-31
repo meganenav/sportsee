@@ -1,3 +1,4 @@
+//Fonction permettant de créer un appel à l'API avec une URL passée en paramètres et de renvoyer les données reçues en gérant les erreurs
 export async function fetchData(url) {
 	try {
 		const response = await fetch(url)

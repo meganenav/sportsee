@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import dataAdapter from '../../utils/dataAdapterPerformance.js'
-import {
-  Radar,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  CartesianGrid,
-} from 'recharts'
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, CartesianGrid } from 'recharts'
 
+//Création du graphique de performance
 export default function PerformanceChart(props) {
+  //Initialisation des variables d'état pour la mise en place des données, le chargement et les erreurs  
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
+  //Récupération des données 
   useEffect(() => {
     const getData = async () => {
       try{
@@ -38,6 +34,7 @@ export default function PerformanceChart(props) {
     return <div>Erreur: {error.message}</div>
   }
 
+  //Création d'un tableau contenant les données correctement structurées pour les utiliser ensuite
   let newDataArray = []
   for(const property in data.data.data){
     newDataArray.push({
@@ -46,6 +43,7 @@ export default function PerformanceChart(props) {
     })
   }
 
+  // Mise en place du graphique avec les propriétés nécessaires
   return (
     <RadarChart outerRadius={90} width={258} height={263} data={newDataArray} startAngle={-150} endAngle={210}>
       <CartesianGrid fill="#282D30" />

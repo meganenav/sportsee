@@ -10,6 +10,16 @@
   width: 835px;
   height: 320px;
 
+  .recharts-legend-wrapper {
+    font-size: 0.938em;
+    color: $dark-grey2;
+  }
+
+  .recharts-legend-item {
+    font-size: 0.875em;
+    font-weight: 500;
+  }
+
   .activity-chart-title {
     position: absolute;
     margin: 24px 0 0 32px;
@@ -47,6 +57,7 @@
 
 .sessions-chart {
   background-color: $red-sessions;
+
   .sessions-chart-title {
     position: absolute;
     margin: 29px 0 0 34px;
@@ -58,6 +69,7 @@
     width: 147px;
     line-height: 24px;
   }
+
   .recharts-cartesian-axis-ticks {
     opacity: 0.5;
   }
@@ -65,6 +77,7 @@
   .recharts-cartesian-axis {
     font-size: 0.75em;
     font-weight: 500;
+    opacity: 0.5;
   }
 
   .custom-tooltip-sessions {

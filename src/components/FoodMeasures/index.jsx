@@ -6,11 +6,14 @@ import proteinesImg from '../../images/protein-icon.svg'
 import carbsImg from '../../images/carbs-icon.svg'
 import lipidsImg from '../../images/fat-icon.svg'
 
+//Création des blocs d'apports nutritionnels de l'utilisateur
 export default function FoodMeasures(props) {
+  //Initialisation des variables d'état pour la mise en place des données, le chargement et les erreurs
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
+  //Récupération des données 
   useEffect(() => {
     const getData = async () => {
       try{
@@ -35,6 +38,7 @@ export default function FoodMeasures(props) {
     return <div>Erreur: {error.message}</div>
   }
 
+  //Mise en forme correcte des données pour correspondre à la maquette
   let calories = data.data.keyData.calorieCount
   if(calories >= 1000){
     const caloriesLength = calories.toString().length
@@ -50,6 +54,9 @@ export default function FoodMeasures(props) {
   const carbs = data.data.keyData.carbohydrateCount
   const lipids = data.data.keyData.lipidCount
 
+  /*Appel au composant FoodMeasureBlock autant de fois que nécessaire pour le nombre de blocs souhaités. 
+  Passage des valeurs dans les props pour afficher les blocs personnalisés selon les calories, protéines, etc.
+  */
   return (
     <>
       <FoodMeasureBlock

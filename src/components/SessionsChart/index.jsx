@@ -2,31 +2,39 @@ import React, { useEffect, useState } from 'react'
 import dataAdapter from '../../utils/dataAdapterSessions.js'
 import { LineChart, Line, XAxis, CartesianGrid, Tooltip } from 'recharts'
 
+//Création du graphique de sessions
 export default function SessionsChart(props) {
+  //Initialisation des variables d'état pour la mise en place des données, le chargement et les erreurs
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
+  //Initialisation des variables d'état pour la position de la souris et le survol
   const [mouseX, setMouseX] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
 
+  //Fonction permettant d'enregistrer la position de la souris
   const handleMouseMove = (e) => {
     if (e && e.activeCoordinate) {
       setMouseX(e.activeCoordinate.x)
     }
   }
 
+  //Fonction permettant de modifier la variable isHovered à true
   const handleMouseEnter = () => {
     setIsHovered(true)
   }
 
+  //Fonction permettant d'indiquer une position de la souris à 0 et de modifier la variable isHovered à false
   const handleMouseLeave = () => {
     setMouseX(0)
     setIsHovered(false)
   }
 
+  //Création de la couleur de fond avec mise en place d'un dégradé dynamique lors du survol grâce aux pourcentages
   const getBackgroundColor = () => {
     const chartWidth = 258
+    //Lorsque le graphique n'est pas survolé, on renvoie la couleur rouge par défaut
     if (!isHovered) {
       return '#FF0000'
     }
@@ -34,6 +42,7 @@ export default function SessionsChart(props) {
     return `linear-gradient(to right, rgba(255, 0, 0, 1) ${percentage}%, rgba(0, 0, 0, 0.0975) ${percentage}%)`
   }
 
+  //Récupération des données 
   useEffect(() => {
     const getData = async () => {
       try {
@@ -56,16 +65,22 @@ export default function SessionsChart(props) {
     return <div>Erreur: {error.message}</div>
   }
 
+  /* Création d'un object contenant la première lettre des jours de la semaine
+  pour pouvoir ensuite l'utiliser dans l'axe des abscisses
+  */
   const days = {
+    0: '',
     1: 'L',
     2: 'M',
     3: 'M',
     4: 'J',
     5: 'V',
     6: 'S',
-    7: 'D'
+    7: 'D',
+    8: '',
   }
 
+  //Création d'un Tooltip personnalisé pour indiquer les données souhaitées
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
@@ -77,11 +92,21 @@ export default function SessionsChart(props) {
     return null
   }
 
+  let newArray = [...data.data.sessions]
+  newArray.unshift({day: 0, sessionLength: newArray[0].sessionLength})
+  newArray.push({day: 8, sessionLength: newArray[newArray.length-1].sessionLength})
+
+  /* Mise en place du graphique avec les propriétés nécessaires.
+  On appelle la fonction getBackgroundColor() pour mettre en place la couleur de fond avec une transition.
+  On met en place les propriétés onMouseEnter, onMouseLeave et onMouseMove avec appel aux fonctions dédiées pour gérer les animations.
+  On intègre un dégradé pour la courbe du graphique grâce au composant LinearGradient.
+  */
   return (
     <div
       style={{
         width: 258,
         height: 263,
+        borderRadius: 5,
         background: getBackgroundColor(),
         transition: 'background 0.3s',
       }}
@@ -95,7 +120,7 @@ export default function SessionsChart(props) {
           top: 77,
           bottom: 20,
         }}
-        data={data.data.sessions}
+        data={newArray}
         onMouseMove={handleMouseMove}
       >
         <CartesianGrid />
@@ -112,7 +137,7 @@ export default function SessionsChart(props) {
             <stop offset="100%" stopColor="rgba(255, 255, 255, 1)" />
           </linearGradient>
         </defs>
-        <XAxis dataKey="day" tickFormatter={(tick) => days[tick]} tickLine={false} axisLine={false} stroke="#FFFFFF" padding={{ left: 20, right: 20 }} />
+        <XAxis dataKey="day" tickFormatter={(tick) => days[tick]} tickLine={false} axisLine={false} stroke="#FFFFFF" padding={{ left: -15, right: -15 }} />
         <Tooltip content={<CustomTooltip />} wrapperStyle={{ backgroundColor: '#FFFFFF' }} cursor={false} />
       </LineChart>
     </div>

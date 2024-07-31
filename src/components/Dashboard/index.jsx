@@ -6,9 +6,16 @@ import SessionsChart from '../../components/SessionsChart'
 import PerformanceChart from '../../components/PerformanceChart'
 import ScoreChart from '../../components/ScoreChart'
 
+//Création du tableau de bord
 export default function Dashboard() {
+    //Récupération de l'id dans les paramètres du lien
     const { id } = useParams()
 
+    /*On transmet l'id de l'utilisateur dans les différents composants.
+    On fait appel au composant UserInfos affichant le message pour l'utilisateur.
+    On appelle les différents composants des graphiques (ActivityChart, SessionsChart, PerformanceChart, ScoreChart).
+    On utilise le composant FoodMeasures pour afficher les blocs liés aux apports nutritionnels de l'utilisateur.
+    */
     return (
         <>
             <UserInfos id={id} />

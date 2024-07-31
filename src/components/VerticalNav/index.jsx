@@ -3,6 +3,7 @@ import swimIcon from '../../images/swim.svg'
 import bikeIcon from '../../images/bike.svg'
 import gymIcon from '../../images/gym.svg'
 
+//Affichage de la barre de navigation verticale
 export default function Home() {
   return (
     <div className="secondary-nav">

@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import dataAdapter from '../../utils/dataAdapterScore.js'
-import {
-  RadialBarChart,
-  RadialBar,
-  PolarAngleAxis,
-  CartesianGrid
-} from 'recharts'
+import { RadialBarChart, RadialBar, PolarAngleAxis, CartesianGrid } from 'recharts'
 
+//Création du graphique de score d'objectif
 export default function ScoreChart(props) {
+  //Initialisation des variables d'état pour la mise en place des données, le chargement et les erreurs  
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
+  //Récupération des données 
   useEffect(() => {
     const getData = async () => {
       try {
@@ -36,6 +34,7 @@ export default function ScoreChart(props) {
     return <div>Erreur: {error.message}</div>
   }
 
+  //Calcul du score pour avoir un pourcentage
   const score = data.newScore * 100
   const dataGraph = [
     {
@@ -44,6 +43,7 @@ export default function ScoreChart(props) {
     },
   ]
 
+  // Mise en place du graphique avec les propriétés nécessaires
   return (
     <>
       <div className="score-chart-inside">

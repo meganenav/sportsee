@@ -1,4 +1,5 @@
 import logo from '../../images/logo.svg'
+//Affichage de la barre de navigation horizontale
 export default function Home() {
   return (
     <header>
