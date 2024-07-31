@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { fetchUserInfos } from '../../services/userInfos.js'
+import dataAdapter from '../../utils/dataAdapterUserInfos.js'
 
 //Création du bloc des informations de l'utilisateur
 export default function UserInfos(props) {
@@ -12,7 +12,7 @@ export default function UserInfos(props) {
   useEffect(() => {
     const getData = async () => {
       try {
-        const result = await fetchUserInfos(props.id)
+        const result = await dataAdapter(props.id)
         setData(result)
       } 
       catch(error){
