@@ -66,7 +66,8 @@ export default function SessionsChart(props) {
   }
 
   /* Création d'un object contenant la première lettre des jours de la semaine
-  pour pouvoir ensuite l'utiliser dans l'axe des abscisses
+  pour pouvoir ensuite l'utiliser dans l'axe des abscisses.
+  Ajout de deux valeurs nulles au début et à la fin pour permettre à la ligne du graphique de toucher les bords
   */
   const days = {
     0: '',
@@ -92,6 +93,7 @@ export default function SessionsChart(props) {
     return null
   }
 
+  //Duplication de la première et de la dernière valeur du tableau de données pour permettre à la ligne du graphique de toucher les bords
   let newArray = [...data.data.sessions]
   newArray.unshift({day: 0, sessionLength: newArray[0].sessionLength})
   newArray.push({day: 8, sessionLength: newArray[newArray.length-1].sessionLength})

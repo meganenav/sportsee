@@ -47,8 +47,8 @@ export default function ActivityChart(props) {
     return null
   }
 
-  // Fonction de formatage pour la légende
-  const legendFormatter = (value, entry) => {
+  //Fonction de formatage pour la légende
+  const legendFormatter = (value) => {
     return <span style={{ color: '#74798C' }}>{value}</span>
   }
 
