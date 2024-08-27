@@ -1,5 +1,9 @@
 main {
-  margin: 68px 0 0 110px;
+  margin: 68px 0 0 10px;
+  @media (min-width: 1440px) { 
+    margin: 68px 50px 0 110px;
+  }
+  width: 100%;
 
   .user-infos {
     h1 {
@@ -29,6 +33,7 @@ main {
       display: flex;
       flex-direction: column;
       row-gap: 30px;
+      width: 75%;
 
       .charts-blocks {
         display: flex;

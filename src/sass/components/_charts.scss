@@ -1,14 +1,16 @@
 .chart {
   border-radius: 5px;
   box-shadow: $box-shadow-containers;
-  width: 258px;
   height: 263px;
+  @media (min-width: 1440px) { 
+    width: 258px;
+  }
 }
 
 .activity-chart {
   background-color: $light-grey;
-  width: 835px;
   height: 320px;
+  width: 100%;
 
   .recharts-legend-wrapper {
     font-size: 0.938em;
@@ -53,10 +55,12 @@
 
 .score-chart {
   background-color: $light-grey;
+  width: 31%;
 }
 
 .sessions-chart {
   background-color: $red-sessions;
+  width: 31%;
 
   .sessions-chart-title {
     position: absolute;
@@ -95,6 +99,7 @@
 
 .performance-chart {
   background-color: $dark-grey;
+  width: 31%;
 
   .recharts-polar-angle-axis-ticks {
     font-size: 0.75em;

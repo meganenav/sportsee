@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import dataAdapter from '../../utils/dataAdapterScore.js'
-import { RadialBarChart, RadialBar, PolarAngleAxis, CartesianGrid } from 'recharts'
+import { RadialBarChart, RadialBar, PolarAngleAxis, CartesianGrid, ResponsiveContainer } from 'recharts'
 
 //Création du graphique de score d'objectif
 export default function ScoreChart(props) {
@@ -53,20 +53,22 @@ export default function ScoreChart(props) {
           de votre objectif
         </p>
       </div>
-      <RadialBarChart
-        width={258}
-        height={263}
-        innerRadius={90}
-        outerRadius={90}
-        barSize={10}
-        data={dataGraph}
-        startAngle={0}
-        endAngle={360}
-      >
-        <CartesianGrid fill="#FBFBFB" />
-        <PolarAngleAxis type="number" domain={[0, 100]} tick={false} />
-        <RadialBar fill="#FBFBFB" dataKey="score" cornerRadius={5} clockWise={false} />
-      </RadialBarChart>
+      <ResponsiveContainer maxWidth={258} maxHeight={263}>
+        <RadialBarChart
+          width="100%"
+          height="100%"
+          innerRadius={90}
+          outerRadius={90}
+          barSize={10}
+          data={dataGraph}
+          startAngle={0}
+          endAngle={360}
+        >
+          <CartesianGrid fill="#FBFBFB" />
+          <PolarAngleAxis type="number" domain={[0, 100]} tick={false} />
+          <RadialBar fill="#FBFBFB" dataKey="score" cornerRadius={5} clockWise={false} />
+        </RadialBarChart>
+      </ResponsiveContainer>
     </>
   )
 }

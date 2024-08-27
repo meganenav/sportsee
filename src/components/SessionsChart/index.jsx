@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import dataAdapter from '../../utils/dataAdapterSessions.js'
-import { LineChart, Line, XAxis, CartesianGrid, Tooltip } from 'recharts'
+import { LineChart, Line, XAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 
 //Création du graphique de sessions
 export default function SessionsChart(props) {
@@ -106,7 +106,6 @@ export default function SessionsChart(props) {
   return (
     <div
       style={{
-        width: 258,
         height: 263,
         borderRadius: 5,
         background: getBackgroundColor(),
@@ -115,33 +114,35 @@ export default function SessionsChart(props) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <LineChart
-        width={258}
-        height={263}
-        margin={{
-          top: 77,
-          bottom: 20,
-        }}
-        data={newArray}
-        onMouseMove={handleMouseMove}
-      >
-        <CartesianGrid />
-        <Line
-          type="monotone"
-          dataKey="sessionLength"
-          stroke="url(#colorLine)"
-          strokeWidth={2}
-          dot={false}
-        />
-        <defs>
-          <linearGradient id="colorLine" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="rgba(255, 255, 255, 0.4032)" />
-            <stop offset="100%" stopColor="rgba(255, 255, 255, 1)" />
-          </linearGradient>
-        </defs>
-        <XAxis dataKey="day" tickFormatter={(tick) => days[tick]} tickLine={false} axisLine={false} stroke="#FFFFFF" padding={{ left: -15, right: -15 }} />
-        <Tooltip content={<CustomTooltip />} wrapperStyle={{ backgroundColor: '#FFFFFF' }} cursor={false} />
-      </LineChart>
+      <ResponsiveContainer maxWidth={258} maxHeight={263}>
+        <LineChart
+          width={258}
+          height={263}
+          margin={{
+            top: 77,
+            bottom: 20,
+          }}
+          data={newArray}
+          onMouseMove={handleMouseMove}
+        >
+          <CartesianGrid />
+          <Line
+            type="monotone"
+            dataKey="sessionLength"
+            stroke="url(#colorLine)"
+            strokeWidth={2}
+            dot={false}
+          />
+          <defs>
+            <linearGradient id="colorLine" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="rgba(255, 255, 255, 0.4032)" />
+              <stop offset="100%" stopColor="rgba(255, 255, 255, 1)" />
+            </linearGradient>
+          </defs>
+          <XAxis dataKey="day" tickFormatter={(tick) => days[tick]} tickLine={false} axisLine={false} stroke="#FFFFFF" padding={{ left: -15, right: -15 }} />
+          <Tooltip content={<CustomTooltip />} wrapperStyle={{ backgroundColor: '#FFFFFF' }} cursor={false} />
+        </LineChart>
+      </ResponsiveContainer>
     </div>
   )
 }

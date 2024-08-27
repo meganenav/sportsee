@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import dataAdapter from '../../utils/dataAdapterPerformance.js'
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, CartesianGrid } from 'recharts'
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, CartesianGrid, ResponsiveContainer } from 'recharts'
 
 //Création du graphique de performance
 export default function PerformanceChart(props) {
@@ -45,12 +45,14 @@ export default function PerformanceChart(props) {
 
   // Mise en place du graphique avec les propriétés nécessaires
   return (
-    <RadarChart outerRadius={90} width={258} height={263} data={newDataArray} startAngle={-150} endAngle={210}>
-      <CartesianGrid fill="#282D30" />
-      <PolarGrid />
-      <PolarAngleAxis dataKey="kind" stroke="#FFF" tickLine={false} />
-      <PolarRadiusAxis tick={false} axisLine={false} />
-      <Radar dataKey="value" fill="#FF0101" fillOpacity={0.7} />
-    </RadarChart>
+    <ResponsiveContainer maxWidth={258} maxHeight={263}>
+      <RadarChart data={newDataArray} startAngle={-150} endAngle={210} margin={{ top: 20, right: 30, bottom: 20, left: 30 }}>
+        <CartesianGrid fill="#282D30" />
+        <PolarGrid />
+        <PolarAngleAxis dataKey="kind" stroke="#FFF" tickLine={false} />
+        <PolarRadiusAxis tick={false} axisLine={false} />
+        <Radar dataKey="value" fill="#FF0101" fillOpacity={0.7} />
+      </RadarChart>
+    </ResponsiveContainer>
   )
 }
